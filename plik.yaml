@@ -1,0 +1,11 @@
+address:
+    city: New York
+    country: USA
+    street: 123 Main Street
+age: 30
+email: johndoe@example.com
+hobbies:
+- reading
+- hiking
+- photography
+name: John Doe

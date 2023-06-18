@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bookstore>
+  <book category="Fantasy">
+    <title>Harry Potter and the Philosopher's Stone</title>
+    <author>J.K. Rowling</author>
+    <year>1997</year>
+  </book>
+  <book category="Fantasy">
+    <title>The Hobbit</title>
+    <author>J.R.R. Tolkien</author>
+    <year>1937</year>
+  </book>
+  <book category="Mystery">
+    <title>The Da Vinci Code</title>
+    <author>Dan Brown</author>
+    <year>2003</year>
+  </book>
+</bookstore>

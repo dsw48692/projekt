@@ -26,13 +26,14 @@ jobs:
 
       - name: Install Resources
         run:  |
+          pip install pyinstaller
           pip install PyYAML
           pip install tkinter
           pip install xmltodict
           pip install argparse
 
-      - name: project.exe
-        run: python project.py
+      - name: build.exe
+        run: pyinstaller.exe --onefile --noconsole project.py
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3

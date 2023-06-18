@@ -1,5 +1,6 @@
 import argparse
 import json
+import yaml
 
 parser = argparse.ArgumentParser(description='Konwersja plików XML, JSON i YAML.')
 
@@ -27,12 +28,26 @@ if input_file_extension == 'json':
         print("Błąd składni pliku JSON:")
         print(e)
         exit(1)
+elif input_file_extension == 'yaml' or input_file_extension == 'yml':
+    try:
+        with open(args.input_file, 'r') as file:
+            data = yaml.safe_load(file)
+    except FileNotFoundError:
+        print("Plik nie istnieje.")
+        exit(1)
+    except yaml.YAMLError as e:
+        print("Błąd składni pliku YAML:")
+        print(e)
+        exit(1)
+else:
+    print("Nieobsługiwane rozszerzenie pliku.")
+    exit(1)
 
 # Przykładowa weryfikacja danych
 
 if data is not None:
     # Wykonaj operacje na wczytanych danych
-    print("Plik JSON został poprawnie wczytany.")
+    print("Dane zostały poprawnie wczytane.")
     print(data)
 
     # Zapis danych do pliku JSON

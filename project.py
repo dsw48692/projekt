@@ -50,12 +50,12 @@ if data is not None:
     print("Dane zostały poprawnie wczytane.")
     print(data)
 
-    # Zapis danych do pliku JSON
-    if output_file_extension == 'json':
+    # Zapis danych do pliku YAML
+    if output_file_extension == 'yaml' or output_file_extension == 'yml':
         try:
             with open(args.output_file, 'w') as file:
-                json.dump(data, file)
-            print("Dane zostały zapisane do pliku JSON.")
+                yaml.dump(data, file)
+            print("Dane zostały zapisane do pliku YAML.")
         except FileNotFoundError:
             print("Błąd podczas zapisu do pliku.")
             exit(1)

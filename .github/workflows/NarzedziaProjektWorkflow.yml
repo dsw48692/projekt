@@ -25,7 +25,11 @@ jobs:
           python-version: 3.x
 
       - name: Install Resources
-        run: installResources.bat
+        run:  |
+          pip install PyYAML
+          pip install tkinter
+          pip install xmltodict
+          pip install argparse
 
       - name: project.exe
         run: python project.py

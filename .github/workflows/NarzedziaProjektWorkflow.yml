@@ -1,0 +1,38 @@
+name: Projekt
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 0 * * 0" # Uruchamianie raz w tygodniu w niedzielę o północy
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install Resources
+        run: |
+          pip install -r installResources.bat
+
+      - name: project.exe
+        run: python project.py
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Exe Artifact
+          path: C:\Users\szymo\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\Scripts\project.exe

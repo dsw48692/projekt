@@ -25,8 +25,7 @@ jobs:
           python-version: 3.x
 
       - name: Install Resources
-        run: |
-          pip install -r installResources.bat
+        run: installResources.bat
 
       - name: project.exe
         run: python project.py

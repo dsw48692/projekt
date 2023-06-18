@@ -34,3 +34,13 @@ if data is not None:
     # Wykonaj operacje na wczytanych danych
     print("Plik JSON został poprawnie wczytany.")
     print(data)
+
+    # Zapis danych do pliku JSON
+    if output_file_extension == 'json':
+        try:
+            with open(args.output_file, 'w') as file:
+                json.dump(data, file)
+            print("Dane zostały zapisane do pliku JSON.")
+        except FileNotFoundError:
+            print("Błąd podczas zapisu do pliku.")
+            exit(1)

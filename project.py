@@ -1,18 +1,36 @@
 import argparse
+import json
 
-# Tworzenie parsera
-parser = argparse.ArgumentParser(description='Opis programu')
+parser = argparse.ArgumentParser(description='Konwersja plików XML, JSON i YAML.')
 
-# Dodawanie argumentów
-parser.add_argument('-f', '--file', help='Ścieżka do pliku')
-parser.add_argument('-v', '--verbose', action='store_true', help='Tryb szczegółowy')
+parser.add_argument('input_file', type=str, help='Nazwa pliku wejściowego.')
+parser.add_argument('output_file', type=str, help='Nazwa pliku wyjściowego.')
 
-# Parsowanie argumentów
 args = parser.parse_args()
 
-# Przykładowe użycie argumentów
-if args.file:
-    print('Ścieżka do pliku:', args.file)
+input_file_extension = args.input_file.split('.')[-1]
+input_file_extension = input_file_extension.lower()
 
-if args.verbose:
-    print('Tryb szczegółowy jest włączony')
+output_file_extension = args.output_file.split('.')[-1]
+output_file_extension = output_file_extension.lower()
+
+# Wczytywanie danych
+
+if input_file_extension == 'json':
+    try:
+        with open(args.input_file, 'r') as file:
+            data = json.load(file)
+    except FileNotFoundError:
+        print("Plik nie istnieje.")
+        exit(1)
+    except json.JSONDecodeError as e:
+        print("Błąd składni pliku JSON:")
+        print(e)
+        exit(1)
+
+# Przykładowa weryfikacja danych
+
+if data is not None:
+    # Wykonaj operacje na wczytanych danych
+    print("Plik JSON został poprawnie wczytany.")
+    print(data)
